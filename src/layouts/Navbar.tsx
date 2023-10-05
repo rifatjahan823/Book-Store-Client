@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
@@ -8,12 +8,32 @@ function classNames(...classes) {
 }
 
 export default function Navbar() {
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Check the scroll position, and add/remove the sticky class accordingly
+      if (window.scrollY >=100) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    };
+
+    // Attach the scroll event listener
+    window.addEventListener('scroll', handleScroll);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
-    <Disclosure as="nav" className="bg-[#003461]">
+    <Disclosure as="nav" className={`bg-[#003461] transition duration-700 ${isSticky ? 'fixed top-0 left-0 w-full shadow-lg ' : ''}`}>
       {({ open }) => (
         <>
-          <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-0">
+          <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-0 ">
             <div className="relative flex h-16 items-center justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
