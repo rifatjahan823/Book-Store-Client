@@ -18,7 +18,7 @@ export default function Feature() {
         </h3>{" "}
         <BsArrowRight className="ml-2 text-white text-xl font-semibold" />
       </div>
-      {/* --------------Feature-section-e-------- */}
+      {/* --------------Feature-sectione-------- */}
       <div className="feature_section-2 bg-[#F3F3F3] py-20">
         <div className="grid gap-10 grid-cols-1 md:grid-cols-3 mx-auto max-w-7xl px-2 sm:px-6 lg:px-0 items-center justify-center">
           {/* --------experience---------- */}

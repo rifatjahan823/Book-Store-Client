@@ -13,7 +13,7 @@ export default function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       // Check the scroll position, and add/remove the sticky class accordingly
-      if (window.scrollY >=100) {
+      if (window.scrollY >=200) {
         setIsSticky(true);
       } else {
         setIsSticky(false);
@@ -30,7 +30,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <Disclosure as="nav" className={`bg-[#003461] transition duration-700 ${isSticky ? 'fixed top-0 left-0 w-full shadow-lg ' : ''}`}>
+    <Disclosure as="nav" className={`bg-[#003461] transition duration-700 z-50 ${isSticky ? 'fixed top-0 left-0 w-full shadow-lg ' : ''}`}>
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-0 ">
