@@ -5,7 +5,7 @@ import { BsPlayFill } from "react-icons/bs";
 export default function Hero() {
   return (
     <div className="hero_section bg-[#003461]">
-      <div className="grid gap-10 grid-cols-1 md:grid-cols-2 mx-auto max-w-7xl px-2 sm:px-6 lg:px-0 items-center pb-7 pt-28">
+      <div className="grid gap-10 grid-cols-1 md:grid-cols-2 mx-auto w-11/12 lg:w-10/12 items-center pb-7 pt-28">
         {/* ----------Content----------- */}
         <div>
           <p className="text-xl text-white pb-5">

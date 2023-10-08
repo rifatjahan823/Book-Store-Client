@@ -6,7 +6,7 @@ export default function Book() {
   const { data, isLoading } = useGetProductQuery(undefined);
 
   return (
-    <div className="book_section mx-auto max-w-7xl px-2 sm:px-6 lg:px-0 py-20">
+    <div className="book_section mx-auto w-11/12 lg:w-10/12 py-20">
       <h3 className="text-base font-semibold tracking-[3px] pb-2">BEST SELLER</h3>
       <div className="flex flex-wrap items-center justify-between">
         <h2 className="text-[#121722] text-4xl font-bold">Pick The Book Weekly Best Seller.</h2>

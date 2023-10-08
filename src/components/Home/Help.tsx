@@ -4,7 +4,7 @@ import {BsDashLg } from "react-icons/bs";
 export default function Help() {
   return (
     <div className="hepl_section bg-[#003461] py-28">
-      <div className=" mx-auto max-w-7xl px-2 sm:px-6 lg:px-0 ">
+      <div className=" mx-auto w-11/12 lg:w-10/12 ">
         {/* ---------------title------------- */}
         <div className="text-white text-center pb-20">
             <h3 className="text-base tracking-[3px] font-semibold mb-6"><BsDashLg className="inline-block text-3xl"/> BENEFITS <BsDashLg className="inline-block text-3xl" /></h3>

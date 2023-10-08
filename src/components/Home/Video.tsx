@@ -5,10 +5,10 @@ import { BsPlayFill } from "react-icons/bs";
 export default function Video() {
   return (
     <div
-      className=" bg-cover bg-center bg-no-repeat py-28"
+      className=" bg-cover bg-center bg-no-repeat py-28 bg-fixed"
       style={{ backgroundImage: `url(${bg})` }}
     >
-      <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px text-center text-white">
+      <div className="mx-auto w-11/12 lg:w-10/12 text-center text-white">
         <h3 className="text-2xl font-bold mb-6">
           Exceptionally Energetic About Writting
         </h3>

@@ -20,7 +20,7 @@ export default function Feature() {
       </div>
       {/* --------------Feature-sectione-------- */}
       <div className="feature_section-2 bg-[#F3F3F3] py-20">
-        <div className="grid gap-10 grid-cols-1 md:grid-cols-3 mx-auto max-w-7xl px-2 sm:px-6 lg:px-0 items-center justify-center">
+        <div className="grid gap-10 grid-cols-1 md:grid-cols-3 mx-auto w-11/12 lg:w-10/12 items-center justify-center">
           {/* --------experience---------- */}
           <div>
             <img src={icon1} alt="" />
