@@ -21,14 +21,14 @@ export default function Hero() {
           </p>
           <div className="pt-10 flex items-center ">
             <Link
-              className="bg-[#f8f9fa] text-base text-[#1882db] tracking-wide font-medium py-3.5 px-7 rounded-full border border-white  hover:bg-transparent  hover:text-white mr-5"
+              className="bg-[#f8f9fa] text-base text-[#1882db] tracking-wide font-medium py-3.5 px-7 rounded-full border border-white  hover:bg-transparent  hover:text-white mr-5 transition duration-700 "
               to="/"
             >
               More About Us
             </Link>
             <div className=" flex  items-center">
               <Link to="/">
-                <BsPlayFill className="bg-[#f8f9fa] w-14 h-14  text-[#1882db] font-medium p-3.5 rounded-full border border-white  hover:bg-transparent  hover:text-white" />
+                <BsPlayFill className="bg-[#f8f9fa] w-14 h-14  text-[#1882db] font-medium p-3.5 rounded-full border border-white  hover:bg-transparent  hover:text-white transition duration-700 " />
               </Link>
               <div className="text-white ml-3">
                 <Link className="text-base font-medium leading-none" to="/">Watch Video</Link>

@@ -2,6 +2,7 @@ import Hero from "../components/Home/Hero";
 import Feature from "../components/Home/Feature";
 import About from "../components/Home/About";
 import Help from "../components/Home/Help";
+import Book from "../components/Home/Book";
 
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
             <Feature></Feature>
             <About></About>
             <Help></Help>
+            <Book></Book>
         </>
     )
 }
