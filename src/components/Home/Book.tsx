@@ -4,6 +4,7 @@ import GetBook from "./GetBook";
 
 export default function Book() {
   const { data, isLoading } = useGetProductQuery(undefined);
+
   return (
     <div className="book_section mx-auto max-w-7xl px-2 sm:px-6 lg:px-0 py-20">
       <h3 className="text-base font-semibold tracking-[3px] pb-2">BEST SELLER</h3>
@@ -14,6 +15,10 @@ export default function Book() {
       {/* -------------product----------- */}
       <div className="grid gap-10 grid-cols-1 md:grid-cols-3 lg:grid-cols-4 sm:grid-cols-2 pt-16">
         {
+          isLoading?(
+            <p>Loading.............</p>
+          )
+          :
             data?.data?.map((book:IBook)=>(
                 <GetBook book={book}/>
             ))
