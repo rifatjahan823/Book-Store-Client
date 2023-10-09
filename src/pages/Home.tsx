@@ -5,6 +5,7 @@ import Help from "../components/Home/Help";
 import Book from "../components/Home/Book";
 import Video from "../components/Home/Video";
 import Process from "../components/Home/Process";
+import ChoseUs from "../components/Home/ChoseUs";
 
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
             <Book></Book>
             <Video></Video>
             <Process></Process>
+            <ChoseUs/>
         </>
     )
 }
