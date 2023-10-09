@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 
 export default function Blog() {
   return (
-    <div className="mx-auto w-11/12 lg:w-10/12 py-20">
+    <div className="mx-auto w-11/12 lg:w-10/12 py-24">
       <div className="text-center">
         <h3 className="text-[#1882db] text-base font-bold tracking-[3px]"> <BsDashLg className="inline-block text-3xl text-[#1882db] " />LATEST NEWS <BsDashLg className="inline-block text-3xl text-[#1882db] " /></h3>
         <h2 className="text-[#212529] text-6xl font-bold py-4">Fresh insights from Author every week.</h2>
