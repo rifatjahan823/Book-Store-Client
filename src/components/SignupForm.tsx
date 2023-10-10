@@ -4,10 +4,12 @@ import { Link } from "react-router-dom";
 import { BsGoogle } from "react-icons/bs";
 
 interface LoginFormInputs {
+  name: string;
   email: string;
   password: string;
 }
-export function LoginForm() {
+
+export function SignupForm() {
   // ----------for from------------
   const {
     register,
@@ -19,13 +21,14 @@ export function LoginForm() {
   const onSubmit = (data: LoginFormInputs) => {
     // signInWithEmailAndPassword(data.email, data.password);
   };
-
   return (
     <>
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <div className="flex justify-between">
           <img className="h-10  " src={logo} alt="Your Company" />
-          <Link className="font-bold  text-indigo-600" to="/signup">Signup</Link>
+          <Link className="font-bold  text-indigo-600" to="/login">
+            Signin
+          </Link>
         </div>
         <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
           Sign in to your account
@@ -34,7 +37,36 @@ export function LoginForm() {
       {/* --------------form part-----------     */}
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
         <form onSubmit={handleSubmit(onSubmit)}>
+          {/* ------------Name------------ */}
           <div className="">
+            <label
+              htmlFor="name"
+              className="block text-sm font-medium leading-6 text-gray-900"
+            >
+              Your Name
+            </label>
+            <input
+              type="text"
+              className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 ps-3"
+              id="exampleFormControlInput1"
+              placeholder="Your Name"
+              {...register("name", {
+                required: {
+                  value: true,
+                  message: "Please Give Name",
+                },
+              })}
+            />
+            <label className="label">
+              {errors.name?.type === "required" && (
+                <span className="label-text-alt text-red-500">
+                  {errors.name.message}
+                </span>
+              )}
+            </label>
+          </div>
+          {/* ------------Email------------ */}
+          <div className="pt-5">
             <label
               htmlFor="email"
               className="block text-sm font-medium leading-6 text-gray-900"
@@ -108,15 +140,14 @@ export function LoginForm() {
             </label>
           </div>
 
-          <Link to="" className="text-indigo-600 font-semibold">Forgot password?</Link>
           <button
             type="submit"
             className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 mt-5"
           >
             Sign in
           </button>
-                    {/* ------divider---------------- */}
-                    <div className="relative my-5">
+          {/* ------divider---------------- */}
+          <div className="relative my-5">
             <div className="absolute inset-0 flex items-center">
               <span className="w-full border-t" />
             </div>
