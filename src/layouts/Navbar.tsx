@@ -1,7 +1,9 @@
 import { Fragment, useEffect, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Bars3Icon,  XMarkIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
+import { FaUserGroup } from "react-icons/fa6";
+import { BsCart3 } from "react-icons/bs";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -95,20 +97,16 @@ export default function Navbar() {
                 >
                   <span className="absolute -inset-1.5" />
                   <span className="sr-only">View notifications</span>
-                  <BellIcon className="h-6 w-6" aria-hidden="true" />
+                  <BsCart3 className="h-6 w-6" aria-hidden="true" />
                 </button>
 
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-3">
                   <div>
                     <Menu.Button className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                      <span className="absolute -inset-1.5" />
+                      <span className="absolute -inset-1.2" />
                       <span className="sr-only">Open user menu</span>
-                      <img
-                        className="h-8 w-8 rounded-full"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt=""
-                      />
+                      <FaUserGroup className="h-6 w-6 text-white"/>
                     </Menu.Button>
                   </div>
                   <Transition
@@ -121,7 +119,7 @@ export default function Navbar() {
                     leaveTo="transform opacity-0 scale-95"
                   >
                     <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                      <Menu.Item>
+                      {/* <Menu.Item>
                         {({ active }) => (
                           <a
                             href="#"
@@ -133,31 +131,31 @@ export default function Navbar() {
                             Your Profile
                           </a>
                         )}
-                      </Menu.Item>
+                      </Menu.Item> */}
                       <Menu.Item>
                         {({ active }) => (
                           <Link
-                            to="/"
+                            to=""
                             className={classNames(
                               active ? "bg-gray-100" : "",
                               "block px-4 py-2 text-sm text-gray-700"
                             )}
                           >
-                            Settings
+                            Sign Up
                           </Link>
                         )}
                       </Menu.Item>
                       <Menu.Item>
                         {({ active }) => (
-                          <a
-                            href="#"
+                          <Link
+                          to="/login"
                             className={classNames(
                               active ? "bg-gray-100" : "",
                               "block px-4 py-2 text-sm text-gray-700"
                             )}
                           >
-                            Sign out
-                          </a>
+                            Sign In
+                          </Link>
                         )}
                       </Menu.Item>
                     </Menu.Items>
@@ -171,7 +169,7 @@ export default function Navbar() {
             <div className="space-y-1 px-2 pb-3 pt-2">
               <Disclosure.Button>
                 <Link
-                  to="/"
+                  to="/signup"
                   className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page"
                 >
                   Dashboard
