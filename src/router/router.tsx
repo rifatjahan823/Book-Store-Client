@@ -3,6 +3,7 @@ import App from '../App';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
 import { SignUp } from '../pages/SignUp';
+import PrivateRoute from './PrivateRoute';
 
 export const router = createBrowserRouter([
     {
@@ -12,6 +13,12 @@ export const router = createBrowserRouter([
         {
           index: true,
           element: <Home />,
+        }, 
+        {
+          index: true,
+          element:<PrivateRoute>
+            
+          </PrivateRoute>,
         }, 
       ],
     },
@@ -23,4 +30,5 @@ export const router = createBrowserRouter([
       path: "/signup",
       element:<SignUp/>,
     },
+ 
   ]);

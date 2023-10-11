@@ -21,7 +21,7 @@ export function SignupForm() {
   } = useForm<LoginFormInputs>();
 
   const disPatch = useAppDispatch();
-  const {user,isLoading}=useAppSelector(state=>state.user);
+  const {user,isLoading,error}=useAppSelector(state=>state.user);
   const navigator=useNavigate()
 
   // Submit your data into Redux store
@@ -35,6 +35,9 @@ export function SignupForm() {
     }
     },[user.email,isLoading])
 
+    if(isLoading){
+      return <p>loding</p>
+    }
   return (
     <>
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -156,7 +159,9 @@ export function SignupForm() {
               )}
             </label>
           </div>
-
+          {
+                 error  && <p className='text-red-500'>{error}</p>
+             }
           <button
             type="submit"
             className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 mt-5"
