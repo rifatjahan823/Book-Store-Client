@@ -1,7 +1,10 @@
 import { useForm } from "react-hook-form";
 import logo from "../assets/logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BsGoogle } from "react-icons/bs";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { loginUser } from "../redux/user/userSlice";
+import { useEffect } from 'react';
 
 interface LoginFormInputs {
   email: string;
@@ -15,16 +18,27 @@ export function LoginForm() {
     formState: { errors },
   } = useForm<LoginFormInputs>();
 
+  const {user,isLoading}=useAppSelector(state=>state.user);
+  const disPatch=useAppDispatch();
+  const navigator=useNavigate()
+
   // Submit your data into Redux store
   const onSubmit = (data: LoginFormInputs) => {
-    // signInWithEmailAndPassword(data.email, data.password);
+    disPatch(loginUser({email:data.email,password:data.password}))
   };
+
+
+useEffect(()=>{
+if(user.email && !isLoading){
+  navigator('/')
+}
+},[user.email,isLoading])
 
   return (
     <>
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <div className="flex justify-between">
-          <img className="h-10  " src={logo} alt="Your Company" />
+        <Link to="/"> <img className="h-10 " src={logo} alt="Your Company" /></Link>
           <Link className="font-bold  text-indigo-600" to="/signup">Signup</Link>
         </div>
         <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">

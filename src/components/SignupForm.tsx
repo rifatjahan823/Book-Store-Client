@@ -1,7 +1,10 @@
 import { useForm } from "react-hook-form";
 import logo from "../assets/logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BsGoogle } from "react-icons/bs";
+import { createUser } from "../redux/user/userSlice";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { useEffect } from 'react'
 
 interface LoginFormInputs {
   name: string;
@@ -17,15 +20,29 @@ export function SignupForm() {
     formState: { errors },
   } = useForm<LoginFormInputs>();
 
+  const disPatch = useAppDispatch();
+  const {user,isLoading}=useAppSelector(state=>state.user);
+  const navigator=useNavigate()
+
   // Submit your data into Redux store
   const onSubmit = (data: LoginFormInputs) => {
-    // signInWithEmailAndPassword(data.email, data.password);
+    disPatch(createUser({ email: data.email, password: data.password }))
   };
+
+  useEffect(()=>{
+    if(user.email && !isLoading){
+      navigator('/')
+    }
+    },[user.email,isLoading])
+
   return (
     <>
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <div className="flex justify-between">
-          <img className="h-10  " src={logo} alt="Your Company" />
+          <Link to="/">
+            {" "}
+            <img className="h-10 " src={logo} alt="Your Company" />
+          </Link>
           <Link className="font-bold  text-indigo-600" to="/login">
             Signin
           </Link>
@@ -156,7 +173,9 @@ export function SignupForm() {
             </div>
           </div>
           {/* ----goole----------- */}
-          <Link to=''><BsGoogle className="p-3 bg-[#0D6EFD] text-white rounded-full text-5xl mx-auto" /></Link>
+          <Link to="">
+            <BsGoogle className="p-3 bg-[#0D6EFD] text-white rounded-full text-5xl mx-auto" />
+          </Link>
         </form>
       </div>
     </>

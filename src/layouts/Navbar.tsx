@@ -4,6 +4,11 @@ import { Bars3Icon,  XMarkIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 import { FaUserGroup } from "react-icons/fa6";
 import { BsCart3 } from "react-icons/bs";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { signOut } from "firebase/auth";
+import auth from "../components/firebase.init";
+import { setUser } from "../redux/user/userSlice";
+
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -11,6 +16,16 @@ function classNames(...classes) {
 
 export default function Navbar() {
   const [isSticky, setIsSticky] = useState(false);
+
+const{user}=useAppSelector(state=>state.user);
+const disPatch=useAppDispatch()
+
+const handleLogOut=()=>{
+  signOut(auth)
+  .then(()=>{
+    disPatch(setUser(null))
+  })
+}
 
   useEffect(() => {
     const handleScroll = () => {
@@ -119,45 +134,31 @@ export default function Navbar() {
                     leaveTo="transform opacity-0 scale-95"
                   >
                     <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                      {/* <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
-                            )}
-                          >
-                            Your Profile
-                          </a>
-                        )}
-                      </Menu.Item> */}
-                      <Menu.Item>
-                        {({ active }) => (
-                          <Link
-                            to="/signup"
-                            className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
-                            )}
-                          >
-                            Sign Up
-                          </Link>
+        
+                      {
+                       ! user.email && <>
+                       <Menu.Item>
+                        {({ active }) => (<Link to="/signup"className={classNames(active ? "bg-gray-100" : "",
+                            "block px-4 py-2 text-sm text-gray-700")}>Sign Up</Link>
                         )}
                       </Menu.Item>
                       <Menu.Item>
-                        {({ active }) => (
-                          <Link
-                          to="/login"
-                            className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
-                            )}
-                          >
-                            Sign In
-                          </Link>
+                        {({ active }) => (<Link to="/login"className={classNames(active ? "bg-gray-100" : "",
+                          "block px-4 py-2 text-sm text-gray-700")}>Sign In</Link>
                         )}
                       </Menu.Item>
+                       
+                       </>
+                      }
+                      {
+                        user.email && <>
+                             <Menu.Item>
+                        {({ active }) => (<Link to="/" onClick={handleLogOut}  className={classNames(active ? "bg-gray-100" : "",
+                          "block px-4 py-2 text-sm text-gray-700")}>LogOut</Link>
+                        )}
+                      </Menu.Item>
+                          </>
+                      }
                     </Menu.Items>
                   </Transition>
                 </Menu>
